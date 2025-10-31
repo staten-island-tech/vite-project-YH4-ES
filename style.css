@@ -1,10 +1,39 @@
 .playlistcontainer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     width: 100%;
     height: fit-content;
-    min-height: 10px;
-    overflow-y: auto;
+    min-height: 300px;
+    flex-wrap: wrap;
     background-color: red;
+    margin: 50px 0;
+}
+.samplecontainer{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: fit-content;
+    min-height: 200px;
+    overflow-x: scroll;
+    background-color: blue;
+}
+.sampleitem{
+    min-width: 200px;
+    height: 200px;
+    background-color: yellow;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.playlistitem{
+    width: 230px;
+    height: 280px;
+    background-color: green;
+    margin: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
