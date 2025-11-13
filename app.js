@@ -8,6 +8,9 @@ function addList(){
     </div>`
 );
 };
+function addSong(){
+    document.querySelector(".psongcontainer")
+}
 addList();
 addList();
 addList();

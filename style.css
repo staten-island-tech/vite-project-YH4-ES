@@ -30,16 +30,21 @@
 }
 .playlistitem{
     width: 230px;
-    height: 280px;
+    height: 340px;
     background-color: green;
     margin: 19px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: table-column;
 }
 
 .playlistimg{
-    height: 80%;
-    top:0px;
+    height: 62%;
+    margin: 10px 10px 5px 10px;
     position: relative;
+}
+
+.psongcontainer{
+    height: 100px;
+    margin: 0px 10px;
+    position: relative;
+    background-color: aqua;
 }
