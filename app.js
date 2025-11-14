@@ -10,7 +10,12 @@ function addList(){
 };
 function addSong(){
     document.querySelector(".psongcontainer").insertAdjacentHTML(
-        
+    "beforeend",
+    `<div class = "songbar">
+        <img class="play" scr="">
+        <img class="stop" scr="">
+        <p class = "bartext">"XYZ SONG"</p>
+    </div> `
     )
 }
 addList();
@@ -23,3 +28,4 @@ addList();
 addList();
 addList();
 addList();
+addSong();
