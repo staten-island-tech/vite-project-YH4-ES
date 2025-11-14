@@ -9,7 +9,9 @@ function addList(){
 );
 };
 function addSong(){
-    document.querySelector(".psongcontainer")
+    document.querySelector(".psongcontainer").insertAdjacentHTML(
+        
+    )
 }
 addList();
 addList();
