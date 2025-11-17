@@ -49,4 +49,10 @@
     background-color: aqua;
 }
 
-.bartext{}
+.songbar{
+    height: 30px;
+    width: auto;
+}
+.bartext{
+    margin: 0;
+}
