@@ -47,12 +47,19 @@
     margin: 0px 10px;
     position: relative;
     background-color: aqua;
+    overflow-y:scroll;
 }
 
 .songbar{
     height: 30px;
     width: auto;
+    white-space: nowrap;
+    background-color: wheat;
+    border-color: grey;
+    border-radius: 2px;
+    border: solid
 }
 .bartext{
     margin: 0;
+    left: 20px;
 }
