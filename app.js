@@ -18,6 +18,17 @@ function addSong(){
     </div> `
     )
 }
+const sample = document.querySelectorAll(".sampleitem");
+let jesusTakeTheWheel = []
+const sampleArray = Array.from(sample);
+function enableSelect(){
+    sample.forEach((item) => {
+        item.addEventListener("click", () => {
+        console.log("john", sampleArray.indexOf(item))
+    });
+    });
+};
+console.log(sample)
 addList();
 addList();
 addList();
@@ -33,3 +44,4 @@ addSong();
 addSong();
 addSong();
 addSong();
+enableSelect();
