@@ -24,7 +24,9 @@ const sampleArray = Array.from(sample);
 function enableSelect(){
     sample.forEach((item) => {
         item.addEventListener("click", () => {
-        console.log("john", sampleArray.indexOf(item))
+        let title = item.getAttribute("data-title")
+        console.log(data)
+        console.log("john", sampleArray.indexOf(item), title)
     });
     });
 };
