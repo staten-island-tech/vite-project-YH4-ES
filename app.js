@@ -19,17 +19,34 @@ function addSong(){
     )
 }
 const sample = document.querySelectorAll(".sampleitem");
-let jesusTakeTheWheel = []
 const sampleArray = Array.from(sample);
+let title = ""
 function enableSelect(){
     sample.forEach((item) => {
         item.addEventListener("click", () => {
-        let title = item.getAttribute("data-title")
-        console.log(data)
+        title = item.getAttribute("data-title")
+        console.log(title)
         console.log("john", sampleArray.indexOf(item), title)
+        return title;
     });
     });
 };
+let titlekey ="";
+const container = document.querySelectorAll(".playlistitem");
+console.log(container, "contain");
+function inputSelect(){
+    container.forEach((item)=> {
+        item.addEventListener("click", () => {
+            titlekey = Object.keys(title);
+            console.log(titlekey)
+            if (titlekey.length != 0) {
+                console.log("boingo")
+            };
+        });
+    });
+};
+
+
 console.log(sample)
 addList();
 addList();
@@ -47,3 +64,4 @@ addSong();
 addSong();
 addSong();
 enableSelect();
+inputSelect();
