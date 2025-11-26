@@ -1,12 +1,16 @@
 
+import './style.css'
+let i =0
 function addList(){
     document.querySelector(".playlistcontainer").insertAdjacentHTML(
     "beforeend",
     `<div class="playlistitem">
-        <img class="playlistimg" src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F65d1deeee872f584f50b39dfa073245e.1000x1000x1.jpg" alt="Playlist Image">
+        <img data-playlist = "${i}" class="playlistimg" src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F65d1deeee872f584f50b39dfa073245e.1000x1000x1.jpg" alt="Playlist Image">
         <div class="psongcontainer"></div>
     </div>`
-);
+    
+    );
+i++
 };
 function addSong(title, song){
     document.querySelector(".psongcontainer").insertAdjacentHTML(
@@ -31,7 +35,7 @@ function enableSelect(){
         data.title = item.getAttribute("data-title")
         data.song = item.getAttribute("data-song")
         console.log(data.title)
-        console.log("john", sampleArray.indexOf(item), data.title)
+        console.log("john", sampleArray.indexOf(item), data.title, data.song)
         return data
     });
     });
@@ -72,3 +76,7 @@ function inputSelect(){
 };
 enableSelect();
 inputSelect();
+
+function makeSongPlay(){
+    
+}
