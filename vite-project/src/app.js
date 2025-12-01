@@ -5,15 +5,15 @@ function addList(){
     document.querySelector(".playlistcontainer").insertAdjacentHTML(
     "beforeend",
     `<div class="playlistitem">
-        <img data-playlist = "${i}" class="playlistimg" src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F65d1deeee872f584f50b39dfa073245e.1000x1000x1.jpg" alt="Playlist Image">
-        <div class="psongcontainer"></div>
+        <img class="playlistimg" src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F65d1deeee872f584f50b39dfa073245e.1000x1000x1.jpg" alt="Playlist Image">
+        <div class="psongcontainer" data-playlist = "${i}"></div>
     </div>`
     
     );
 i++
 };
 function addSong(title, song){
-    document.querySelector(".psongcontainer").insertAdjacentHTML(
+    document.querySelector("[data-playlist = '0']").insertAdjacentHTML( //I'm sure this is the worst method possible but i am very proud
     "beforeend",
     `<div class = "songbar">
         </img class="play" scr="">
@@ -32,7 +32,7 @@ let data = {
 function enableSelect(){
     sample.forEach((item) => {
         item.addEventListener("click", () => {
-        data.title = item.getAttribute("data-title")
+        data.title = item.getAttribute('data-title')
         data.song = item.getAttribute("data-song")
         console.log(data.title)
         console.log("john", sampleArray.indexOf(item), data.title, data.song)
@@ -76,6 +76,10 @@ function inputSelect(){
 };
 enableSelect();
 inputSelect();
+let doe = document.querySelector("[data-playlist = '0']");
+console.log(doe);
+
+console.log(document.querySelectorAll(".psongcontainer"));
 
 function makeSongPlay(){
     
