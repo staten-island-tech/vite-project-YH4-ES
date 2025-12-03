@@ -11,20 +11,24 @@ function addList(){
     
     );
 i++
+
 };
 let selectedContainer = i
 function addSong(title, song){
+    console.log(song)
     document.querySelector(`[data-playlist = '${selectedContainer}']`).insertAdjacentHTML( //I'm sure this is the worst method possible but i am very proud
     "beforeend",
     `<div class = "songbar">
-        </img class="play" scr="">
-        </img class="stop" scr="">
+        <img class="play" src="Play button.png" alt="jogn" height = "30">
+        <img class="stop" src="" hidden>
         <p class = "bartext">${title}</p>
-        <audio id = "song" autostart = "false" src = "${song}" loop ></audio>
+        <audio id = "song" autostart = "false" src = "${song}"></audio>
     </div> `
     
     );
-    console.log(document.getElementById("id"))
+    let audiosong = document.getElementById("song") //I dont know man
+    audiosong.src = song
+    console.log(document.getElementById("song"))
 }
 const sample = document.querySelectorAll(".sampleitem");
 const sampleArray = Array.from(sample);
@@ -69,10 +73,11 @@ function inputSelect(){
             console.log(titlekey)
             if (titlekey.length != 0) {
                 console.log(data.title)
-                console.log(data.song)
+                
                 console.log(item.getAttribute("data-playlist0"))
                 selectedContainer = item.getAttribute("data-playlist0")
                 addSong(data.title, data.song)
+                console.log(data.song)
             };
         });
     });

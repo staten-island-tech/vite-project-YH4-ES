@@ -57,9 +57,14 @@
     background-color: wheat;
     border-color: grey;
     border-radius: 2px;
-    border: solid
+    border: solid;
+    overflow: hidden;
+    display:flex
 }
 .bartext{
-    margin: 0;
-    left: 20px;
+    left: 50px;
+    position:absolute;
+    vertical-align: middle;
+    text-align: middle;
+    top: 0;
 }
