@@ -1,5 +1,11 @@
 
 import './style.css'
+
+function makeSongPlay(selectBar){
+    let playedsong = document.querySelector(`[data-song = "${selectBar}"]`)
+    playedsong.play()
+}
+
 let i =0
 function addList(){
     document.querySelector(".playlistcontainer").insertAdjacentHTML(
@@ -14,21 +20,23 @@ i++
 
 };
 let selectedContainer = i
+let selectedSong = 0
 function addSong(title, song){
     console.log(song)
-    document.querySelector(`[data-playlist = '${selectedContainer}']`).insertAdjacentHTML( //I'm sure this is the worst method possible but i am very proud
+    document.querySelector(`[data-playlist = '${selectedContainer}']`).insertAdjacentHTML( //I'm sure this is the worst method possible but i am very proud. Edit: nevermind
     "beforeend",
-    `<div class = "songbar">
-        <img class="play" src="Play button.png" alt="jogn" height = "30">
-        <img class="stop" src="" hidden>
+    `<div class = "songbar" data-bar="${selectedSong}">
+        <img class="play" src="Play button.png" alt="jogn" height = "30" data-play="${selectedSong}">
+        <img class="stop" src="" hidden data-stop="${selectedSong}">
         <p class = "bartext">${title}</p>
-        <audio id = "song" autostart = "false" src = "${song}"></audio>
+        <audio id = "song" autostart = "false" src = "${song}" data-song="${selectedSong}"></audio>
     </div> `
     
     );
     let audiosong = document.getElementById("song") //I dont know man
     audiosong.src = song
     console.log(document.getElementById("song"))
+    selectedSong++
 }
 const sample = document.querySelectorAll(".sampleitem");
 const sampleArray = Array.from(sample);
@@ -89,6 +97,4 @@ console.log(doe);
 
 console.log(document.querySelectorAll(".psongcontainer"));
 
-function makeSongPlay(){
-    
-}
+
