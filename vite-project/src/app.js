@@ -1,9 +1,29 @@
 
 import './style.css'
-
-function makeSongPlay(selectBar){
+let k = 0
+function makeSongPlay(selectBar, whichlist){
+    
     let playedsong = document.querySelector(`[data-song = "${selectBar}"]`)
-    playedsong.play()
+    let player = document.querySelector(`[data-play = "${selectBar}"]`)
+    player.addEventListener("click", () => { 
+        while (k <= 5){
+        let nextSong = {
+        nextbar: selectBar++,
+        nextlist: whichlist,
+        }
+        playedsong.play()
+        console.log("playing")
+        k++
+        console.log(nextSong)
+        }
+        
+    });
+    playedsong.addEventListener('ended', () => {
+        if ()
+
+    })
+    
+    
 }
 
 let i =0
@@ -16,27 +36,31 @@ function addList(){
     </div>`
     
     );
-i++
-
+    i++
 };
 let selectedContainer = i
 let selectedSong = 0
 function addSong(title, song){
     console.log(song)
+    let whichlist = document.querySelector(`[data-playlist = '${selectedContainer}']`).closest(".playlistitem")
+    whichlist = whichlist.getAttribute('data-playlist0')
     document.querySelector(`[data-playlist = '${selectedContainer}']`).insertAdjacentHTML( //I'm sure this is the worst method possible but i am very proud. Edit: nevermind
     "beforeend",
     `<div class = "songbar" data-bar="${selectedSong}">
         <img class="play" src="Play button.png" alt="jogn" height = "30" data-play="${selectedSong}">
         <img class="stop" src="" hidden data-stop="${selectedSong}">
         <p class = "bartext">${title}</p>
-        <audio id = "song" autostart = "false" src = "${song}" data-song="${selectedSong}"></audio>
+        <audio id = "song" autostart = "false" src = "${song}" data-song="${selectedSong}" data-whichlist = "${whichlist}"></audio>
     </div> `
     
     );
     let audiosong = document.getElementById("song") //I dont know man
     audiosong.src = song
     console.log(document.getElementById("song"))
+    makeSongPlay(selectedSong, whichlist)
     selectedSong++
+    console.log("haha", whichlist)
+    
 }
 const sample = document.querySelectorAll(".sampleitem");
 const sampleArray = Array.from(sample);
@@ -86,6 +110,10 @@ function inputSelect(){
                 selectedContainer = item.getAttribute("data-playlist0")
                 addSong(data.title, data.song)
                 console.log(data.song)
+                data = {
+                    title: "",
+                    song: ""
+                }
             };
         });
     });
