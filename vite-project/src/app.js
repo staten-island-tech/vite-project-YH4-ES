@@ -6,20 +6,22 @@ function makeSongPlay(selectBar, whichlist){
     let playedsong = document.querySelector(`[data-song = "${selectBar}"]`)
     let player = document.querySelector(`[data-play = "${selectBar}"]`)
     player.addEventListener("click", () => { 
-        while (k <= 5){
         let nextSong = {
         nextbar: selectBar++,
         nextlist: whichlist,
         }
         playedsong.play()
         console.log("playing")
-        k++
         console.log(nextSong)
-        }
         
     });
     playedsong.addEventListener('ended', () => {
-        if ()
+        let nextBar = document.querySelector(`[data-song = "${whichlist + 1}"]`)
+    console.log("bimbob", nextBar)
+        console.log(nextBar.getAttribute('data-whichlist'))
+        if (nextBar.getAttribute('data-whichlist') == whichlist){
+            console.log("bald")
+        }
 
     })
     
@@ -60,6 +62,8 @@ function addSong(title, song){
     makeSongPlay(selectedSong, whichlist)
     selectedSong++
     console.log("haha", whichlist)
+    return whichlist
+    
     
 }
 const sample = document.querySelectorAll(".sampleitem");
@@ -109,11 +113,13 @@ function inputSelect(){
                 console.log(item.getAttribute("data-playlist0"))
                 selectedContainer = item.getAttribute("data-playlist0")
                 addSong(data.title, data.song)
+                addSong(data.title, data.song)
                 console.log(data.song)
                 data = {
                     title: "",
                     song: ""
                 }
+                
             };
         });
     });
