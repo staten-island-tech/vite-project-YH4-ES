@@ -1,13 +1,12 @@
 
 import './style.css'
-let k = 0
 function makeSongPlay(selectBar, whichlist){
     
     let playedsong = document.querySelector(`[data-song = "${selectBar}"]`)
     let player = document.querySelector(`[data-play = "${selectBar}"]`)
     player.addEventListener("click", () => { 
         let nextSong = {
-        nextbar: selectBar++,
+        nextbar: selectBar,
         nextlist: whichlist,
         }
         playedsong.play()
@@ -16,11 +15,18 @@ function makeSongPlay(selectBar, whichlist){
         
     });
     playedsong.addEventListener('ended', () => {
-        let nextBar = document.querySelector(`[data-song = "${whichlist + 1}"]`)
-    console.log("bimbob", nextBar)
+        console.log("nextbar test", Number(selectBar) + 1)
+        console.log("selectbar", selectBar)
+        let nextBar = document.querySelector(`[data-song = "${Number(selectBar) + 1}"]`)
+        console.log("bimbob", nextBar)
         console.log(nextBar.getAttribute('data-whichlist'))
-        if (nextBar.getAttribute('data-whichlist') == whichlist){
+        let nextBarlist = nextBar.getAttribute('data-whichlist')
+        console.log(nextBarlist, whichlist)
+        if (nextBarlist == whichlist){
             console.log("bald")
+            nextBar.play()
+        } else {
+            console.log("endoflist")
         }
 
     })
