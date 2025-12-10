@@ -91,6 +91,10 @@ function enableSelect(){
 };
 let titlekey ="";
 
+function customSelect(){
+    
+}
+
 
 console.log(sample)
 addList();
@@ -103,7 +107,6 @@ addList();
 addList();
 addList();
 addList();
-addSong();
 
 const container = document.querySelectorAll(".playlistitem");
 
@@ -118,7 +121,6 @@ function inputSelect(){
                 
                 console.log(item.getAttribute("data-playlist0"))
                 selectedContainer = item.getAttribute("data-playlist0")
-                addSong(data.title, data.song)
                 addSong(data.title, data.song)
                 console.log(data.song)
                 data = {
@@ -137,4 +139,12 @@ console.log(doe);
 
 console.log(document.querySelectorAll(".psongcontainer"));
 
+document.getElementById("myForm").addEventListener("submit", function(e) {
+    e.preventDefault()
+    var formdata = new FormData(e.target)
+    console.log(Object.fromEntries(formdata))
+    let datatemp = Object.fromEntries(formdata)
+    data.title = datatemp.title
+    data.song = datatemp.songlink
 
+})
