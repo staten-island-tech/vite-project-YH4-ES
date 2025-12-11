@@ -1,3 +1,39 @@
+:root {
+    --primary_color: white;
+    --secondary_color: black;
+}
+
+.bodylight{
+    background-color: var(--primary_color);
+}
+.bodydark{
+    background-color: var(--secondary_color);
+}
+.titletextlight{
+    color: black;
+}
+.titletextdark{
+    color: white;
+}
+.subtitlelight{
+    color:black
+}
+.subtitledark{
+    color:white
+}
+.formlight{
+    color: black
+}
+.formdark{
+    color:white
+}
+.annoyingtext{
+    color:black
+}
+.lessannoyingtext{
+    color:white
+}
+
 .playlistcontainer{
     display: flex;
     flex-direction: row;
@@ -6,8 +42,21 @@
     height: fit-content;
     min-height: 300px;
     flex-wrap: wrap;
-    background-color: red;
+    background-image: url("preview16.jpg");
     margin: 50px 0;
+    background-size: cover;
+}
+.playlistcontainerdark{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: fit-content;
+    min-height: 300px;
+    flex-wrap: wrap;
+    background-image: url("nightclouds.jpg");
+    margin: 50px 0;
+    background-size: cover;
 }
 .samplecontainer{
     display: flex;
@@ -17,7 +66,8 @@
     height: fit-content;
     min-height: 200px;
     overflow-x: scroll;
-    background-color: blue;
+    background-color: rgb(204, 166, 166);
+    border:solid;
 }
 .sampleitem{
     min-width: 200px;
@@ -25,29 +75,34 @@
     background-color: yellow;
     margin: 0 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 }
 .playlistitem{
     width: 230px;
     height: 340px;
-    background-color: green;
+    background-color: white;
     margin: 19px;
     display: table-column;
+    border: solid;
 }
 
 .playlistimg{
-    height: 62%;
+    height: 60%;
     margin: 10px 10px 5px 10px;
     position: relative;
+    border: solid;
+
 }
 
 .psongcontainer{
-    height: 100px;
+    height: 80px;
     margin: 0px 10px;
     position: relative;
     background-color: aqua;
     overflow-y:scroll;
+    border: solid;
 }
 
 .songbar{
@@ -66,4 +121,39 @@
     vertical-align: middle;
     text-align: middle;
     top: 0;
+}
+
+.addlist{
+    background-color: rgb(180, 255, 104);
+    padding: 20px;
+    width: 150px;
+    margin: 20px
+}
+
+.thumbchange{
+    background-color: rgba(0, 166, 255, 0.833);
+    height: 20px;
+    margin: 0px 10px;
+    position: relative;
+    text-align: end;
+    border:solid;
+    border-width: 2px;
+    border-color: black;
+    
+}
+
+.darkmode{
+    margin-left: auto;
+    width: 700px;
+    color:black;
+}
+.lightmode{
+    margin-left: auto;
+    width: 700px;
+    color:white;
+}
+
+.sampleimg{
+    height: 90%;
+    object-fit: cover;
 }

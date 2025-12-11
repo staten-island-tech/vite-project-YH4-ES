@@ -1,17 +1,34 @@
 
+
 import './style.css'
+let lastSong=""
 function makeSongPlay(selectBar, whichlist){
+    let currentBar = ""
     
     let playedsong = document.querySelector(`[data-song = "${selectBar}"]`)
     let player = document.querySelector(`[data-play = "${selectBar}"]`)
-    player.addEventListener("click", () => { 
+    player.addEventListener("click", (e) => { 
+        document.querySelectorAll('audio').forEach(el => el.pause());
+        let currentTar = e.currentTarget
+        currentBar = currentTar.getAttribute("data-play")
+        console.log(currentBar)
+        playedsong = document.querySelector(`[data-song = "${currentBar}"]`)
+        console.log(playedsong)
         let nextSong = {
         nextbar: selectBar,
         nextlist: whichlist,
         }
-        playedsong.play()
-        console.log("playing")
-        console.log(nextSong)
+        if (playedsong !== lastSong){
+            playedsong.play()
+            console.log("playing")
+            console.log(nextSong)
+            lastSong = playedsong
+        } else {
+            lastSong = ""
+            playedsong.currentTime = 0
+        }
+        
+        
         
     });
     playedsong.addEventListener('ended', () => {
@@ -34,16 +51,36 @@ function makeSongPlay(selectBar, whichlist){
     
 }
 
+
+
 let i =0
+let thumb = ""
+let index = ""
 function addList(){
     document.querySelector(".playlistcontainer").insertAdjacentHTML(
     "beforeend",
     `<div class="playlistitem" data-playlist0 = "${i}">
-        <img class="playlistimg" src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F65d1deeee872f584f50b39dfa073245e.1000x1000x1.jpg" alt="Playlist Image">
+        <img class="playlistimg" data-image="${i}" src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F65d1deeee872f584f50b39dfa073245e.1000x1000x1.jpg" alt="Playlist Image">
         <div class="psongcontainer" data-playlist = "${i}"></div>
-    </div>`
+        <div class="thumbchange" data-thumb = "${i}" data-click = "">Change Thumb</div>
+    </div>
+    `
+    
     
     );
+    document.querySelector(`[data-image = '${i}']`).dataset.click = `${i}`
+    document.querySelector(`[data-thumb = '${i}']`).addEventListener("click", (e) => {
+        let sign = prompt("Imagelink.")
+        console.log(sign)
+        let thumb = e.currentTarget
+        let index = thumb.dataset.thumb
+        console.log(index)
+        console.log(document.querySelector(`[data-image = '${index}']`))
+        document.querySelector(`[data-image = '${index}']`).src = `${sign}`
+        
+    }
+
+    )
     i++
 };
 let selectedContainer = i
@@ -56,13 +93,14 @@ function addSong(title, song){
     "beforeend",
     `<div class = "songbar" data-bar="${selectedSong}">
         <img class="play" src="Play button.png" alt="jogn" height = "30" data-play="${selectedSong}">
+        <audio id = "song" autostart = "false" src = "${song}" data-song="${selectedSong}" data-whichlist = "${whichlist}"></audio>
         <img class="stop" src="" hidden data-stop="${selectedSong}">
         <p class = "bartext">${title}</p>
-        <audio id = "song" autostart = "false" src = "${song}" data-song="${selectedSong}" data-whichlist = "${whichlist}"></audio>
+        
     </div> `
     
     );
-    let audiosong = document.getElementById("song") //I dont know man
+    let audiosong = document.querySelector(`[data-song = '${selectedSong}']`) //I dont know man
     audiosong.src = song
     console.log(document.getElementById("song"))
     makeSongPlay(selectedSong, whichlist)
@@ -91,9 +129,6 @@ function enableSelect(){
 };
 let titlekey ="";
 
-function customSelect(){
-    
-}
 
 
 console.log(sample)
@@ -108,10 +143,11 @@ addList();
 addList();
 addList();
 
-const container = document.querySelectorAll(".playlistitem");
 
+let container = ""
 console.log(container, "contain");
 function inputSelect(){
+    container = document.querySelectorAll(".playlistitem");
     container.forEach((item)=> {
         item.addEventListener("click", () => {
             titlekey = Object.keys(data.title);
@@ -139,6 +175,11 @@ console.log(doe);
 
 console.log(document.querySelectorAll(".psongcontainer"));
 
+document.querySelector(".addlist").addEventListener("click", () => {
+    addList();
+    inputSelect();
+})
+
 document.getElementById("myForm").addEventListener("submit", function(e) {
     e.preventDefault()
     var formdata = new FormData(e.target)
@@ -148,3 +189,43 @@ document.getElementById("myForm").addEventListener("submit", function(e) {
     data.song = datatemp.songlink
 
 })
+
+document.querySelector(".darkmode").addEventListener("click", () => {
+    if (document.body.classList.contains("bodylight")) {
+        document.body.classList.add("bodydark");
+        document.body.classList.remove("bodylight");
+        document.querySelector(".titletextlight").classList.add("titletextdark")
+        document.querySelector(".titletextlight").classList.remove("titletextlight")
+        document.querySelector(".subtitlelight").classList.add("subtitledark")
+        document.querySelector(".subtitlelight").classList.remove("subtitlelight")
+        document.querySelector(".formlight").classList.add("formdark")
+        document.querySelector(".formlight").classList.remove("formlight")
+        document.querySelector(".darkmode").classList.add("lightmode")
+        document.querySelector(".darkmode").classList.remove("darkmode")
+        document.querySelector(".lightmode").textContent = "Say hello back to light mode?"
+        document.querySelector(".annoyingtext").classList.add("lessannoyingtext")
+        document.querySelector(".annoyingtext").classList.remove("annoyingtext")
+        document.querySelector(".playlistcontainer").classList.add("playlistcontainerdark")
+        document.querySelector(".playlistcontainer").classList.remove("playlistcontainer")
+
+
+    }
+    else {
+        document.body.classList.add("bodylight");
+        document.body.classList.remove("bodydark");
+        document.querySelector(".titletextdark").classList.add("titletextlight")
+        document.querySelector(".titletextdark").classList.remove("titletextdark")
+        document.querySelector(".subtitledark").classList.add("subtitlelight")
+        document.querySelector(".subtitledark").classList.remove("subtitledark")
+        document.querySelector(".formdark").classList.add("formlight")
+        document.querySelector(".formdark").classList.remove("formdark")
+        document.querySelector(".lightmode").classList.add("darkmode")
+        document.querySelector(".lightmode").classList.remove("lightmode")
+        document.querySelector(".darkmode").textContent = "Wow, boring"
+        document.querySelector(".lessannoyingtext").classList.add("annoyingtext")
+        document.querySelector(".lessannoyingtext").classList.remove("lessannoyingtext")
+        document.querySelector(".playlistcontainerdark").classList.add("playlistcontainer")
+        document.querySelector(".playlistcontainerdark").classList.remove("playlistcontainerdark")
+    }
+})
+
