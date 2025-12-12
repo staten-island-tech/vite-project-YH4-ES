@@ -42,7 +42,7 @@
     height: fit-content;
     min-height: 300px;
     flex-wrap: wrap;
-    background-image: url("preview16.jpg");
+    background-image: url('/preview16.jpg');
     margin: 50px 0;
     background-size: cover;
 }
@@ -54,7 +54,7 @@
     height: fit-content;
     min-height: 300px;
     flex-wrap: wrap;
-    background-image: url("nightclouds.jpg");
+    background-image: url('/nightclouds.jpg');
     margin: 50px 0;
     background-size: cover;
 }

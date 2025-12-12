@@ -207,6 +207,7 @@ document.querySelector(".darkmode").addEventListener("click", () => {
         document.querySelector(".annoyingtext").classList.remove("annoyingtext")
         document.querySelector(".playlistcontainer").classList.add("playlistcontainerdark")
         document.querySelector(".playlistcontainer").classList.remove("playlistcontainer")
+        document.querySelector(".playlistcontainer").src = `nightclouds.jpg`
 
 
     }
