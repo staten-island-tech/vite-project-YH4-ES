@@ -57,6 +57,7 @@ let i =0
 let thumb = ""
 let index = ""
 function addList(){
+    if (document.querySelector(".playlistcontainer") !== null){
     document.querySelector(".playlistcontainer").insertAdjacentHTML(
     "beforeend",
     `<div class="playlistitem" data-playlist0 = "${i}">
@@ -67,7 +68,17 @@ function addList(){
     `
     
     
-    );
+    
+    )} else {
+        document.querySelector(".playlistcontainerdark").insertAdjacentHTML(
+    "beforeend",
+    `<div class="playlistitem" data-playlist0 = "${i}">
+        <img class="playlistimg" data-image="${i}" src="https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F65d1deeee872f584f50b39dfa073245e.1000x1000x1.jpg" alt="Playlist Image">
+        <div class="psongcontainer" data-playlist = "${i}"></div>
+        <div class="thumbchange" data-thumb = "${i}" data-click = "">Change Thumb</div>
+    </div>
+    `)
+    }
     document.querySelector(`[data-image = '${i}']`).dataset.click = `${i}`
     document.querySelector(`[data-thumb = '${i}']`).addEventListener("click", (e) => {
         let sign = prompt("Imagelink.")
@@ -178,7 +189,7 @@ console.log(document.querySelectorAll(".psongcontainer"));
 document.querySelector(".addlist").addEventListener("click", () => {
     addList();
     inputSelect();
-})
+});
 
 document.getElementById("myForm").addEventListener("submit", function(e) {
     e.preventDefault()
@@ -207,7 +218,6 @@ document.querySelector(".darkmode").addEventListener("click", () => {
         document.querySelector(".annoyingtext").classList.remove("annoyingtext")
         document.querySelector(".playlistcontainer").classList.add("playlistcontainerdark")
         document.querySelector(".playlistcontainer").classList.remove("playlistcontainer")
-        document.querySelector(".playlistcontainer").src = `nightclouds.jpg`
 
 
     }
